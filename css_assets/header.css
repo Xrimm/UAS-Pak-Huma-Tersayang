@@ -1,0 +1,51 @@
+#mainHeader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 64px;
+
+    background: transparent;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 44px;
+
+    z-index: 2500;
+}
+
+#mainHeader nav {
+    display: flex;
+    margin-left: auto;
+    gap: 24px;
+
+    font-size: 18px;
+}
+
+#mainHeader nav a {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#mainHeader nav a:hover {
+    color: #4e4396;
+}
+
+#mainHeader, #mainHeader nav a {
+    font-family: Arial, sans-serif;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    height: 64px; /* sama dengan header */
+}
+
+.logo img {
+    display: block;     /* penting */
+    height: 48px;       /* ukuran logo */
+    width: auto;
+    border-radius: 12px;
+}
