@@ -5,10 +5,13 @@
     font-family: Arial, sans-serif;
 }
 
-.home1 {
+.newest_index {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0 24px;   /* INI pengganti body padding */
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 48px;
 }
 
 .hero-bg {
@@ -37,4 +40,16 @@
         rgba(255,255,255,0),
         #fff
     );
+}
+
+.news_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 40px;
+}
+
+.more {
+    cursor: pointer;
+    font-weight: bold;
 }

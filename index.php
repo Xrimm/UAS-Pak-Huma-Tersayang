@@ -1,6 +1,6 @@
 <?php 
 include "data/news.php";
-include "data/card_sets.php";
+include "data/cardsets.php";
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -11,6 +11,7 @@ include "data/card_sets.php";
         <link rel="stylesheet" href="css_assets/style.css">
         <link rel="stylesheet" href="css_assets/header.css">
         <link rel="stylesheet" href="css_assets/news.css">
+        <link rel="stylesheet" href="css_assets/cardsets.css">
     </head>
     
     <body>
@@ -19,25 +20,53 @@ include "data/card_sets.php";
 
         <div class="hero-bg"></div>
 
-        <section class="home1">
-            <!-- Bagian Kiri -->
-             <div class="newest_news">
+        <section class="newest_index">
+
+            <section class="home1">
+                <!-- Bagian Kiri -->
+                <div class="newest_news">
+                    <div class="news_header">
+                        <h1>News</h1>
+                        <div class="more">MORE &gt;</div>
+                    </div>
+
+                    <ul>
+                        <?php foreach($news as $item): ?>
+                        <li>
+                            <a href="">
+                                <span class="date"><?php echo $item['date']; ?></span>
+                                <span class="title"><?php echo ' ' . $item['title']; ?></span>
+                            </a>
+                        </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="home2">
+                <!-- Bagian Kanan -->
                 <div class="news_header">
-                    <h1>News</h1>
+                    <h1>New Cardsets</h1>
                     <div class="more">MORE &gt;</div>
                 </div>
 
                 <ul>
-                <?php foreach($news as $item): ?>
-                    <li>
-                        <a href="#">
-                            <span class="date"><?php echo $item['date']; ?></span>
-                            <span class="title"><?php echo ' ' . $item['title']; ?></span>
+                    <?php foreach($cardsets as $item): ?>
+                    <li class="cardsets">
+                        <a href="">
+                            <div class="thumb">
+                                <img src="<?php echo $item['img']; ?>" alt="">
+                            </div>
+
+                            <div class="thumb_info">
+                                <span class="date"><?php echo $item['date']; ?></span>
+                                <h3 class="title"><?php echo ' ' . $item['title']; ?></h3>
+                            </div>
                         </a>
                     </li>
-                <?php endforeach; ?>
+                    <?php endforeach; ?>
                 </ul>
-             </div>
+            </section>
         </section>
     </body>
 </html>
