@@ -1,0 +1,146 @@
+/* WRAPPER FULL WIDTH */
+.best_seller_wrap {
+    position: relative; /* INI YANG HILANG */
+    width: 100%;
+    margin-top: 80px;
+    margin-bottom: 30px;
+
+    background: rgba(217, 238, 248, 0.923);
+
+    background-size: cover;
+    background-position: center;
+}
+
+/* KONTEN */
+.best_seller {
+    position: relative;
+    z-index: 2;
+
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 120px;
+}
+
+.best_seller_wrap::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 140px;
+
+    background: linear-gradient(
+        to bottom,
+        #ffffff,
+        rgba(255,255,255,0)
+    );
+
+    z-index: 1;
+}
+
+.best_seller_wrap::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 140px;
+
+    background: linear-gradient(
+        to top,
+        #ffffff,
+        rgba(255,255,255,0)
+    );
+
+    z-index: 1;
+}
+
+/* JUDUL */
+.best_title {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 80px;
+    font-family: 'Cinzel', serif;
+    color: #d7bb87;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+
+/* PODIUM */
+.podium {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 88px; /* gap ditambah sedikit */
+}
+
+/* CARD */
+.card {
+    width: 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    color: #111;
+    border-radius: 16px;
+}
+
+/* HAPUS efek pembesaran kartu tengah */
+.card:nth-child(2) {
+    transform: none;
+}
+
+/* IMAGE */
+.card img {
+    width: 100%;
+    max-width: 240px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* TITLE */
+.card h2 {
+    margin-top: 18px;
+    font-family: 'Cinzel', serif;
+    font-size: 18px;
+    line-height: 1.3;
+
+    min-height: 48px;       /* ⬅️ area judul tetap */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+/* RARITY */
+.rarity {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-family: serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+}
+
+/* RARITY STYLE */
+.rarity {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #004684bb;
+}
+
+/* SOLD */
+.sold {
+    display: block;
+    margin-top: 8px;
+    font-size: 13px;
+    color: #111; /* ganti ke hitam */
+}

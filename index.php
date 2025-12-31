@@ -1,6 +1,7 @@
 <?php 
 include "data/news.php";
 include "data/cardsets.php";
+include "data/best_seller.php";
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -8,10 +9,12 @@ include "data/cardsets.php";
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Casholle</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap">
         <link rel="stylesheet" href="css_assets/style.css">
         <link rel="stylesheet" href="css_assets/header.css">
         <link rel="stylesheet" href="css_assets/news.css">
         <link rel="stylesheet" href="css_assets/cardsets.css">
+        <link rel="stylesheet" href="css_assets/best_seller.css">
     </head>
     
     <body>
@@ -66,6 +69,30 @@ include "data/cardsets.php";
                     </li>
                     <?php endforeach; ?>
                 </ul>
+            </section>
+        </section>
+
+        <section class="best_seller_wrap">
+            <section class="best_seller">
+                <h1 class="best_title">Best Seller</h1>
+
+                <div class="podium">
+                    <?php foreach ($bestSellers as $item): ?>
+                        <div class="card">
+                            <img src="<?= $item['image']; ?>" alt="<?= $item['name']; ?>">
+
+                            <h2><?= $item['name']; ?></h2>
+
+                            <span class="rarity" data-rarity="<?= $item['rarity']; ?>">
+                                <?= ucfirst($item['rarity']); ?>
+                            </span>
+
+                            <span class="sold">
+                                Terjual <?= number_format($item['sold']); ?>
+                            </span>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
             </section>
         </section>
     </body>
