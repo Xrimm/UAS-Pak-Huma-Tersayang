@@ -17,6 +17,7 @@ include "data/casholle_database.php";
         <link rel="stylesheet" href="css_assets/cardsets.css">
         <link rel="stylesheet" href="css_assets/best_seller.css">
         <link rel="stylesheet" href="css_assets/casholle_database_showcase.css">
+        <link rel="stylesheet" href="css_assets/footer.css">
     </head>
     
     <body>
@@ -124,5 +125,7 @@ include "data/casholle_database.php";
                 </div>
             </div>
         </section>
+
+        <?php include 'footer.php'; ?>
     </body>
 </html>

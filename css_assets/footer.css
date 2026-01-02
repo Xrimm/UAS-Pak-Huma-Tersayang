@@ -1,0 +1,104 @@
+#main_footer {
+    background: #000;
+    color: #fff;
+    padding: 48px 0;
+}
+
+.footer_inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.footer_kiri {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.footer_logo img {
+    width: 160px;
+    height: auto;
+    position: relative;
+    right: 18px;
+}
+
+.social_icons span {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 14px;
+    font-family: 'Cinzel', serif ;
+}
+
+.social_icons {
+    display: flex;
+    gap: 16px;
+}
+
+.social_icons a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#insta {
+    width: 19px;
+    height: auto;
+    position: relative;
+    bottom: 1px;
+}
+
+#youtube {
+    position: relative;
+    top: 1px;
+}
+
+.footer_kanan {
+    text-align: right;
+    position: relative;
+    top: 43px;
+}
+
+.footer_nav {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 12px;
+}
+
+.footer_nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer_nav a:hover {
+    text-decoration: underline;
+}
+
+.copyright {
+    font-size: 13px;
+    color: #aaa;
+}
+
+/* Scroll to top button */
+.scroll_top {
+    position: absolute;
+    right: 24px;
+    top: 1px;
+    background: #fff;
+    color: #000;
+    border: none;
+    width: 104px;
+    height: 34px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.scroll_top:hover {
+    background: #ddd;
+}

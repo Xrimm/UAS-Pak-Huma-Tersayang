@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css_assets/header.css">
     <link rel="stylesheet" href="css_assets/style.css">
     <link rel="stylesheet" href="css_assets/about_us.css">
+    <link rel="stylesheet" href="css_assets/footer.css">
 </head>
 <body>
 
@@ -46,6 +47,8 @@
         </section>
     </main>
 </div>
+
+<?php include 'footer.php'; ?>
 
 </body>
 </html>
