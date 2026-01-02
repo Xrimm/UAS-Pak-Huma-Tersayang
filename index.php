@@ -2,6 +2,7 @@
 include "data/news.php";
 include "data/cardsets.php";
 include "data/best_seller.php";
+include "data/casholle_database.php";
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -15,6 +16,7 @@ include "data/best_seller.php";
         <link rel="stylesheet" href="css_assets/news.css">
         <link rel="stylesheet" href="css_assets/cardsets.css">
         <link rel="stylesheet" href="css_assets/best_seller.css">
+        <link rel="stylesheet" href="css_assets/casholle_database_showcase.css">
     </head>
     
     <body>
@@ -72,6 +74,7 @@ include "data/best_seller.php";
             </section>
         </section>
 
+
         <section class="best_seller_wrap">
             <section class="best_seller">
                 <h1 class="best_title">Best Seller</h1>
@@ -94,6 +97,32 @@ include "data/best_seller.php";
                     <?php endforeach; ?>
                 </div>
             </section>
+        </section>
+        
+
+        <section class="database_showcase">
+            <h2>Casholle Database</h2>
+            <p class="database_p">Ringkasan data gudang Casholle</p>
+
+            <div class="casholle_cards">
+                <div class="casholle_count">
+                    <div class="icon">🃏</div>
+                    <div class="number"><?= $jumlahJenisKartu ?></div>
+                    <div class="label">Jenis Kartu Terdaftar</div>
+                </div>
+
+                <div class="casholle_count">
+                    <div class="icon">💳</div>
+                    <div class="number"><?= $jumlahKartuTerjual ?></div>
+                    <div class="label">Kartu Terjual</div>
+                </div>
+
+                <div class="casholle_count">
+                    <div class="icon">📦</div>
+                    <div class="number"><?= $jumlahKartuTersedia ?></div>
+                    <div class="label">Kartu Tersedia</div>
+                </div>
+            </div>
         </section>
     </body>
 </html>
