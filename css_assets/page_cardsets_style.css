@@ -1,0 +1,130 @@
+/* FILE: css_assets/page_cardsets_style.css */
+
+/* 1. KONTAINER UTAMA */
+.page_container {
+    max-width: 1280px; 
+    margin: 140px auto 80px; 
+    padding: 0 24px;
+    position: relative;
+}
+
+/* 2. JUDUL HALAMAN */
+.page_title {
+    font-family: 'Cinzel', serif;
+    font-size: 40px; 
+    text-align: center;
+    margin-bottom: 50px;
+    color: #111;
+    text-transform: uppercase;
+}
+
+/* 3. GRID LAYOUT */
+.cardset_grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* 4. MEMPERBESAR GAMBAR */
+.page_container .cardset_grid .cardsets .thumb img {
+    width: 100%;
+    height: 260px; 
+    object-fit: cover;
+    display: block;
+}
+
+/* 5. STYLE KARTU DAN EFEK HOVER (PERBAIKAN DISINI) */
+.cardsets {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    /* Bayangan awal tipis */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    /* Transisi diperhalus */
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    display: flex;            
+    flex-direction: column;   
+}
+
+.cardsets .thumb_info {
+    padding: 24px;          
+    flex-grow: 1;           
+    display: flex;          
+    flex-direction: column; 
+    justify-content: space-between; 
+    min-height: 120px;      
+}
+
+/* EFEK NGAMBANG (FLOATING) */
+.cardsets:hover {
+    /* Gerak ke atas CUMA SEDIKIT (-2px) biar tidak terasa 'ngangkat' tinggi */
+    transform: translateY(-2px); 
+    
+    /* Kuncinya di sini: Bayangan melebar ke bawah biar terasa melayang */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+/* 6. STYLE PAGINATION */
+.pagination_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 60px;
+    
+    /* --- TAMBAHKAN 4 BARIS INI --- */
+    position: relative;      /* Wajib ada agar z-index berfungsi */
+    z-index: 1000;           /* Memaksa tombol muncul di lapisan paling atas */
+    padding-bottom: 20px;    /* Memberi ruang agar tidak mepet footer */
+    pointer-events: auto;    /* Memastikan mouse bisa mengklik area ini */
+    /* ----------------------------- */
+}
+
+.pagination_box a,
+.pagination_box span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;                
+    height: 45px;               
+    border-radius: 50%;         
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    transition: all 0.3s ease;  
+    font-family: Arial, sans-serif;
+}
+
+/* HALAMAN AKTIF (SPAN) - WARNA UNGU */
+.pagination_box span {
+    background-color: #4e4396;  
+    color: white;               
+    box-shadow: 0 4px 10px rgba(78, 67, 150, 0.4); 
+    cursor: default;
+}
+
+/* LINK HALAMAN LAIN (A) - WARNA ABU */
+.pagination_box a {
+    background-color: #f4f4f4;  
+    color: #555;                
+}
+
+/* HOVER PADA NOMOR HALAMAN */
+.pagination_box a:hover {
+    background-color: #dcdcdc;  
+    color: #4e4396;             
+    transform: scale(1.1);      
+}
+
+/* RESPONSIF HP */
+@media (max-width: 768px) {
+    .cardset_grid {
+        grid-template-columns: 1fr;
+    }
+    .page_container .cardset_grid .cardsets .thumb img {
+        height: 200px;
+    }
+}
