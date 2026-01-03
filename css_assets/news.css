@@ -23,12 +23,22 @@
     border-bottom: 1px solid #ddd;
 }
 
-.newest_news a {
+.newest_news .flex_news {
     text-decoration: none;
     color: #000;
     display: flex;
     align-items: center;
-    gap: 40px;   /* GAP date ↔ title */
+    gap: 40px;
+}
+
+.newest_news a {
+    text-decoration: none;
+    color: #000;
+    align-items: center;
+}
+
+.newest_news a:hover {
+    text-decoration: underline;
 }
 
 .newest_news .date {

@@ -16,6 +16,15 @@
     box-shadow 0.3s ease;
 }
 
+.news_header .more a {
+    text-decoration: none;
+    color: #000;
+}
+
+.news_header .more a:hover {
+    text-decoration: underline;
+}
+
 .cardsets:hover {
     transform: scale(1.01); /* NGANGKAT (MEMBESAR) */
     box-shadow:

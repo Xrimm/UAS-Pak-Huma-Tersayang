@@ -1,8 +1,7 @@
 <?php 
-include "data/news.php";
-include "data/cardsets.php";
-include "data/best_seller.php";
 include "data/casholle_database.php";
+include "data/homepage_query.php"
+
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -33,16 +32,18 @@ include "data/casholle_database.php";
                 <div class="newest_news">
                     <div class="news_header">
                         <h1>News</h1>
-                        <div class="more">MORE &gt;</div>
+                        <div class="more"><a href="">MORE &gt;</a></div>
                     </div>
 
                     <ul>
                         <?php foreach($news as $item): ?>
                         <li>
-                            <a href="">
-                                <span class="date"><?php echo $item['date']; ?></span>
-                                <span class="title"><?php echo ' ' . $item['title']; ?></span>
-                            </a>
+                            <div class="flex_news">
+                                <span class="date"><?php echo $item['tanggal_rilis']; ?></span>
+                                <a target="_blank" href="<?php echo $item['link_berita']; ?>">
+                                    <span class="title"><?php echo ' ' . $item['judul_news']; ?></span>
+                                </a>
+                            </div>
                         </li>
                         <?php endforeach; ?>
                     </ul>
@@ -53,20 +54,20 @@ include "data/casholle_database.php";
                 <!-- Bagian Kanan -->
                 <div class="news_header">
                     <h1>New Cardsets</h1>
-                    <div class="more">MORE &gt;</div>
+                    <div class="more"><a href="">MORE &gt;</a></div>
                 </div>
 
                 <ul>
-                    <?php foreach($cardsets as $item): ?>
+                    <?php foreach($cardset as $item): ?>
                     <li class="cardsets">
                         <a href="">
                             <div class="thumb">
-                                <img src="<?php echo $item['img']; ?>" alt="">
+                                <img src="<?php echo $item['gambar_cardset']; ?>" alt="cardset">
                             </div>
 
                             <div class="thumb_info">
-                                <span class="date"><?php echo $item['date']; ?></span>
-                                <h3 class="title"><?php echo ' ' . $item['title']; ?></h3>
+                                <span class="date"><?php echo $item['nama_cardset']; ?></span>
+                                <h3 class="title"><?php echo ' ' . $item['urutan_cardset']; ?></h3>
                             </div>
                         </a>
                     </li>
@@ -81,18 +82,18 @@ include "data/casholle_database.php";
                 <h1 class="best_title">Best Seller</h1>
 
                 <div class="podium">
-                    <?php foreach ($bestSellers as $item): ?>
+                    <?php foreach ($bestSeller as $item): ?>
                         <div class="card">
-                            <img src="<?= $item['image']; ?>" alt="<?= $item['name']; ?>">
+                            <img src="<?= $item['gambar_card']; ?>" alt="<?= $item['nama_card']; ?>">
 
-                            <h2><?= $item['name']; ?></h2>
+                            <h2><?= $item['nama_card']; ?></h2>
 
                             <span class="rarity" data-rarity="<?= $item['rarity']; ?>">
                                 <?= ucfirst($item['rarity']); ?>
                             </span>
 
                             <span class="sold">
-                                Terjual <?= number_format($item['sold']); ?>
+                                Terjual <?= number_format($item['jumlah_terjual']); ?>
                             </span>
                         </div>
                     <?php endforeach; ?>
