@@ -1,6 +1,6 @@
 <?php 
 include "data/casholle_database.php";
-include "data/homepage_query.php"
+include "data/homepage_query.php";
 
 ?>
 <!DOCTYPE html>
@@ -32,7 +32,7 @@ include "data/homepage_query.php"
                 <div class="newest_news">
                     <div class="news_header">
                         <h1>News</h1>
-                        <div class="more"><a href="">MORE &gt;</a></div>
+                        <div class="more"><a href="news_page.php">MORE &gt;</a></div>
                     </div>
 
                     <ul>
@@ -54,7 +54,7 @@ include "data/homepage_query.php"
                 <!-- Bagian Kanan -->
                 <div class="news_header">
                     <h1>New Cardsets</h1>
-                    <div class="more"><a href="">MORE &gt;</a></div>
+                    <div class="more"><a href="page_cardsets.php">MORE &gt;</a></div>
                 </div>
 
                 <ul>
@@ -66,8 +66,8 @@ include "data/homepage_query.php"
                             </div>
 
                             <div class="thumb_info">
-                                <span class="date"><?php echo $item['nama_cardset']; ?></span>
-                                <h3 class="title"><?php echo ' ' . $item['urutan_cardset']; ?></h3>
+                                <span class="date"><?php echo $item['urutan_rilis']; ?></span>
+                                <h3 class="title"><?php echo ' ' . $item['nama_cardset']; ?></h3>
                             </div>
                         </a>
                     </li>
@@ -84,13 +84,26 @@ include "data/homepage_query.php"
                 <div class="podium">
                     <?php foreach ($bestSeller as $item): ?>
                         <div class="card">
-                            <img src="<?= $item['gambar_card']; ?>" alt="<?= $item['nama_card']; ?>">
+                            <?php if ($item['product_type'] === 'Card'): ?>
+                                <?php 
+                                    $firstCard = $item['cards'][0] ?? null; // ambil card pertama
+                                ?>
+                                <?php if ($firstCard): ?>
+                                    <img src="<?= $firstCard['gambar_card'] ?? 'default-card.png'; ?>" 
+                                        alt="<?= htmlspecialchars($firstCard['nama_card']); ?>">
+                                    <h2><?= htmlspecialchars($firstCard['nama_card']); ?></h2>
+                                    <span class="rarity" data-rarity="<?= $firstCard['rarity']; ?>">
+                                        <?= ucfirst($firstCard['rarity']); ?>
+                                    </span>
+                                <?php endif; ?>
 
-                            <h2><?= $item['nama_card']; ?></h2>
-
-                            <span class="rarity" data-rarity="<?= $item['rarity']; ?>">
-                                <?= ucfirst($item['rarity']); ?>
-                            </span>
+                            <?php elseif ($item['product_type'] === 'Starter Deck'): ?>
+                                <?php if ($item['starter_deck']): ?>
+                                    <img src="<?= $item['starter_deck']['gambar_deck'] ?? 'default-deck.png'; ?>" 
+                                        alt="<?= htmlspecialchars($item['starter_deck']['nama_starter']); ?>">
+                                    <h2><?= htmlspecialchars($item['starter_deck']['nama_starter']); ?></h2>
+                                <?php endif; ?>
+                            <?php endif; ?>
 
                             <span class="sold">
                                 Terjual <?= number_format($item['jumlah_terjual']); ?>
@@ -110,19 +123,19 @@ include "data/homepage_query.php"
                 <div class="casholle_count">
                     <div class="icon">🃏</div>
                     <div class="number"><?= $jumlahJenisKartu ?></div>
-                    <div class="label">Jenis Kartu Terdaftar</div>
+                    <div class="label">Jenis Produk Terdaftar</div>
                 </div>
 
                 <div class="casholle_count">
                     <div class="icon">💳</div>
                     <div class="number"><?= $jumlahKartuTerjual ?></div>
-                    <div class="label">Kartu Terjual</div>
+                    <div class="label">Produk Terjual</div>
                 </div>
 
                 <div class="casholle_count">
                     <div class="icon">📦</div>
                     <div class="number"><?= $jumlahKartuTersedia ?></div>
-                    <div class="label">Kartu Tersedia</div>
+                    <div class="label">Produk Tersedia</div>
                 </div>
             </div>
         </section>

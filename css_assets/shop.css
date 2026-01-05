@@ -1,0 +1,157 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f6f8;
+}
+
+.shop-title {
+    text-align: center;
+    font-size: 42px;
+    font-weight: 700;
+    margin-top: 130px;
+    margin-bottom: 24px;
+    color: #111;
+    font-family: 'Cinzel', serif;
+}
+
+.shop-layout {
+    display: flex;
+    gap: 24px;
+    padding: 24px;
+    padding-top: 50px;
+}
+
+.sidebar {
+    width: 240px;
+    background: #fff;
+    min-height: 300px;
+    border-radius: 12px;
+    padding: 12px 0;
+    border: 2px solid #e1e4e8;
+    box-shadow:
+        0 6px 0 rgba(0, 0, 0, 0.08);
+}
+
+
+.category-list {
+    list-style: none;
+}
+
+.category-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    padding: 14px 16px;
+    cursor: pointer;
+}
+
+.category-list li:hover {
+    background: #f4f6f8;
+}
+
+.has-sub {
+    position: relative;
+}
+
+.has-sub .mega-menu {
+    position: absolute;
+    left: 100%;
+    top: 0;
+    background: #fff;
+    padding: 24px 28px;
+    display: none;
+    gap: 32px;
+    z-index: 9999;
+    border: 2px solid #e1e4e8;
+    box-shadow:
+        0 6px 0 rgba(0, 0, 0, 0.08);
+
+    z-index: 1000;
+
+    width: max-content;     /* otomatis mengikuti lebar isi */
+    min-width: 200px;       /* opsional: beri batas minimum */
+    white-space: nowrap;    /* pastikan teks tidak wrap ke baris baru */
+}
+
+/* Sidebar kategori utama */
+.sidebar .category-list > li > a {
+    color: #111;           /* hitam */
+    text-decoration: none; /* hilangkan underline */
+    display: block;
+    width: 100%;
+}
+
+.sidebar .category-list > li > a:hover {
+    color: rgb(0, 157, 255); /* opsional: warna hover */
+}
+
+.mega-menu .menu-col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.mega-menu h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #111;
+}
+
+.mega-menu a {
+    font-size: 13px;
+    color: #555;
+    text-decoration: none;
+    padding: 4px 0;
+}
+
+.mega-menu a:hover {
+    color: rgb(0, 157, 255);
+}
+
+.has-sub:hover .mega-menu {
+    display: flex;
+}
+
+.shop-content {
+    flex: 1;
+}
+
+.shop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+}
+
+.shop-card {
+    background: #fff;
+    border: 2px solid #e1e4e8;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 12px;
+    box-shadow:
+        0 6px 0 rgba(0, 0, 0, 0.08);
+}
+
+.shop-card img {
+    width: auto;
+    height: 225px;          /* atur sesuai selera */
+    object-fit: cover;      /* penting */
+    display: block;
+}
+
+.shop-card h3 {
+    font-size: 14px;      /* ← kecilkan di sini */   /* hilangkan bold */
+    text-align: center;
+    margin: 10px 0 6px;
+    line-height: 1.4;
+}
