@@ -64,31 +64,31 @@ $news = [
         "date" => "2025-01-25",
         "category" => "Event",
         "title" => "Turnamen Offline Casholle Pertama di Bandung",
-        "image" => "images/news11.jpg"
+        "image" => "images/restricted_card.jpg"
     ],
     [
         "date" => "2025-01-28",
         "category" => "Update",
         "title" => "Casholle Tingkatkan Keamanan Transaksi Pengguna",
-        "image" => "images/news12.jpg"
+        "image" => "images/bullet_of_fate.jpg"
     ],
     [
         "date" => "2025-02-01",
         "category" => "Community",
         "title" => "Casholle Community Gathering 2025 Berlangsung Meriah",
-        "image" => "images/news13.jpg"
+        "image" => "images/bs08_alterchaotica.jpg"
     ],
     [
         "date" => "2025-02-05",
         "category" => "Update",
         "title" => "Desain Kartu Eksklusif Kolaborasi dengan Illustrator Lokal",
-        "image" => "images/news14.jpg"
+        "image" => "images/bs08_alterchaotica.jpg"
     ],
     [
         "date" => "2025-02-08",
         "category" => "Promo",
         "title" => "Promo Valentine: Bundle Kartu Spesial Casholle",
-        "image" => "images/news15.jpg"
+        "image" =>"images/bs09_dawn_and_dusk.jpg"
     ]
 ];
 
