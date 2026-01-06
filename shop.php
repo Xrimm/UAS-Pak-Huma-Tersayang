@@ -1,10 +1,24 @@
 <?php 
+session_start();
+
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 require_once "koneksi_database.php";
 require_once "data/product.php";
 require_once "data/kategori_shop.php";
+
+$cart = $_SESSION['cart'] ?? [];
+$viewCart = ($_GET['view'] ?? '') === 'cart';
+$cartProductIds = array_keys($cart);
+
+if ($viewCart) {
+    $cartProductIds = array_keys($cart);
+
+    $filteredProducts = array_filter($allProducts, function ($p) use ($cartProductIds) {
+        return in_array($p['id_product'], $cartProductIds);
+    });
+}
 ?>
 
 <!DOCTYPE html>
@@ -28,6 +42,26 @@ require_once "data/kategori_shop.php";
 
             <aside class="sidebar">
                 <ul class="category-list">
+                    <li class="has-sub cart-menu <?= $viewCart ? 'active' : '' ?>">
+                        <a href="shop.php?view=cart">
+                            <span class="label">Keranjang</span>
+                            <span class="arrow">▶</span>
+                        </a>
+
+                        <div class="mega-menu cart-menu-panel">
+                            <div class="menu-col">
+                                <?php if (empty($cart)): ?>
+                                    <p>Keranjang masih kosong</p>
+                                <?php else: ?>
+                                    <p><?= array_sum($cart) ?> item dipilih</p>
+                                    <a href="checkout.php" class="checkout-btn">
+                                        Checkout
+                                    </a>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </li>
+
                     <!-- Kategori All -->
                     <li>
                         <a href="shop.php">All</a>
@@ -68,39 +102,69 @@ require_once "data/kategori_shop.php";
 
                     <?php foreach ($filteredProducts as $p): ?>
                         <div class="shop-card">
-                            <?php if ($p['product_type'] === 'Card'): ?>
-                                <?php $firstCard = $p['cards'][0] ?? null; ?>
-                                <?php if ($firstCard): ?>
-                                    <img src="<?= $firstCard['gambar_card'] ?? 'default-card.png'; ?>" 
-                                        alt="<?= htmlspecialchars($firstCard['nama_card']); ?>">
-                                    <h3><?= htmlspecialchars($firstCard['nama_card']); ?></h3>
+                                <?php if ($p['product_type'] === 'Card'): ?>
+                                    <?php $firstCard = $p['cards'][0] ?? null; ?>
+                                    <?php if ($firstCard): ?>
+                                        <img src="<?= $firstCard['gambar_card'] ?? 'default-card.png'; ?>" 
+                                            alt="<?= htmlspecialchars($firstCard['nama_card']); ?>">
+                                        <h3><?= htmlspecialchars($firstCard['nama_card']); ?></h3>
+                                    <?php endif; ?>
+
+                                <?php elseif ($p['product_type'] === 'Starter Deck'): ?>
+                                    <?php if ($p['starter_deck']): ?>
+                                        <img src="<?= $p['starter_deck']['gambar_deck'] ?? 'default-deck.png'; ?>" 
+                                            alt="<?= htmlspecialchars($p['starter_deck']['nama_starter']); ?>">
+                                        <h3><?= htmlspecialchars($p['starter_deck']['nama_starter']); ?></h3>
+                                    <?php endif; ?>
                                 <?php endif; ?>
 
-                            <?php elseif ($p['product_type'] === 'Starter Deck'): ?>
-                                <?php if ($p['starter_deck']): ?>
-                                    <img src="<?= $p['starter_deck']['gambar_deck'] ?? 'default-deck.png'; ?>" 
-                                        alt="<?= htmlspecialchars($p['starter_deck']['nama_starter']); ?>">
-                                    <h3><?= htmlspecialchars($p['starter_deck']['nama_starter']); ?></h3>
-                                <?php endif; ?>
-                            <?php endif; ?>
-
-                            <p class="price">
-                                ¥<?= number_format($p['price']); ?>
-                            </p>
-
-                            <?php if ($p['jumlah_tersedia'] > 0): ?>
-                                <p class="stock in-stock">
-                                    ✔ Stok tersedia (<?= $p['jumlah_tersedia']; ?>)
+                                <p class="price">
+                                    ¥<?= number_format($p['price']); ?>
                                 </p>
-                            <?php else: ?>
+
+                                <?php if ($p['jumlah_tersedia'] > 0): ?>
+                                    <p class="stock in-stock">
+                                        ✔ Stok tersedia (<?= $p['jumlah_tersedia']; ?>)
+                                    </p>
+                                <?php else: ?>
                                 <p class="stock out-stock">
                                     ✖ Stok habis
                                 </p>
                             <?php endif; ?>
 
+                            <div class="cart-action">
+                                <?php if ($viewCart): ?>
+                                    <!-- MODE KERANJANG -->
+
+                                    <p>Jumlah: <?= $cart[$p['id_product']] ?></p>
+
+                                    <form action="cart_remove.php" method="post">
+                                        <input type="hidden" name="id_product" value="<?= $p['id_product']; ?>">
+                                        <button type="submit" class="btn-cart remove">
+                                            ❌ Hapus
+                                        </button>
+                                    </form>
+
+                                <?php else: ?>
+                                    
+
+                                    <?php if ($p['jumlah_tersedia'] > 0): ?>
+                                        <form action="cart.php" method="post">
+                                            <input type="hidden" name="id_product" value="<?= $p['id_product']; ?>">
+                                            <input type="hidden" name="qty" value="1">
+                                            <button type="submit" class="btn-cart">
+                                                🛒 Keranjang
+                                            </button>
+                                        </form>
+                                    <?php else: ?>
+                                        <button class="btn-cart disabled" disabled>
+                                            Stok Habis
+                                        </button>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+                            </div>
                         </div>
                     <?php endforeach; ?>
-
                 </div>
             </main>
         
