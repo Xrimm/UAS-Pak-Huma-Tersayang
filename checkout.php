@@ -48,6 +48,7 @@ $totalHarga = getCartTotal($cartProducts, $cart);
                 </div>
 
                 <form method="post" action="checkout_done.php">
+                    <input type="hidden" name="order_id" value="<?= $id_transaksi ?>">
                     <button type="submit" class="btn-pay">Saya sudah membayar</button>
                 </form>
             <?php endif; ?>
