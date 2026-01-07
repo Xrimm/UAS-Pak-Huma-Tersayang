@@ -90,23 +90,23 @@ include "data/homepage_query.php";
                                 ?>
                                 <?php if ($firstCard): ?>
                                     <img src="<?= $firstCard['gambar_card'] ?? 'default-card.png'; ?>" 
-                                        alt="<?= htmlspecialchars($firstCard['nama_card']); ?>">
-                                    <h2><?= htmlspecialchars($firstCard['nama_card']); ?></h2>
+                                        alt="<?= ($firstCard['nama_card']); ?>">
+                                    <h2><?= ($firstCard['nama_card']); ?></h2>
                                     <span class="rarity" data-rarity="<?= $firstCard['rarity']; ?>">
-                                        <?= ucfirst($firstCard['rarity']); ?>
+                                        <?= ($firstCard['rarity']); ?>
                                     </span>
                                 <?php endif; ?>
 
                             <?php elseif ($item['product_type'] === 'Starter Deck'): ?>
                                 <?php if ($item['starter_deck']): ?>
                                     <img src="<?= $item['starter_deck']['gambar_deck'] ?? 'default-deck.png'; ?>" 
-                                        alt="<?= htmlspecialchars($item['starter_deck']['nama_starter']); ?>">
-                                    <h2><?= htmlspecialchars($item['starter_deck']['nama_starter']); ?></h2>
+                                        alt="<?= ($item['starter_deck']['nama_starter']); ?>">
+                                    <h2><?= ($item['starter_deck']['nama_starter']); ?></h2>
                                 <?php endif; ?>
                             <?php endif; ?>
 
                             <span class="sold">
-                                Terjual <?= number_format($item['jumlah_terjual']); ?>
+                                Terjual <?= ($item['jumlah_terjual']); ?>
                             </span>
                         </div>
                     <?php endforeach; ?>
