@@ -32,7 +32,7 @@ $message = "Terima kasih 🙌 Pesanan #$order_id berhasil dibayar.";
 
 // insert ke tabel notif
 $insert = mysqli_query($conn, "
-    INSERT INTO notif (profile_id, message) 
+    INSERT INTO notif (id_profile, message) 
     VALUES ('$profile_id', '$message')
 ");
 

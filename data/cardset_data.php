@@ -4,11 +4,11 @@ ini_set('display_errors', 1);
 
 include "koneksi_database.php";
 
-$cardset = "SELECT id_cardset, nama_cardset, gambar_cardset, urutan_rilis
+$card_set = "SELECT id_cardset, nama_cardset, gambar_cardset, urutan_rilis
         FROM cardset
         ORDER BY urutan_rilis DESC";
 
-$result = $conn->query($cardset);
+$result = $conn->query($card_set);
 
 if (!$result) {
     die("Query error: " . $conn->error);

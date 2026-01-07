@@ -4,7 +4,9 @@
         <!-- LEFT -->
         <div class="footer_kiri">
             <div class="footer_logo">
-                <img src="images/logo.png" alt="Cygames" width="120">
+                <a href="index.php">
+                    <img src="images/logo.png" alt="Cygames" width="120">
+                </a>
             </div>
 
             <div class="social_icons">
